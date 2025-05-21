@@ -1,0 +1,52 @@
+version: 2
+
+## testing models Using dbt_utils Package
+models:
+  - name: stg_customer
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: customer_dim
+    columns:
+      - name: gender
+        tests:
+          - not_null
+      
+          
+  - name: sales_fact
+    description: "{doc('sale_fact')}"
+
+sources:
+  - name: raw_data
+    description: "Data From the Snow Flake Contains sales transcation and Customer Details"
+    schema: raw
+    database: retails
+
+    tables:
+      - name: customer
+        description: "Customer Details"
+        columns:
+          - name: CUSTOMERID
+            description: "Primary key"
+            tests:
+              - not_null
+              - unique
+
+      - name: sale
+        description: "Sales transactions from POS system"
+        columns:
+          - name: TRANSACTION_ID
+            description: "Primary transaction ID"
+            tests:
+              - not_null
+              - unique
+          - name: CUSTOMER_ID
+            description: "Foreign key to customer table"
+            tests:
+              - relationships:
+                  to: source('raw_data', 'customer')
+                  field: CUSTOMERID
+          - name: GENDER
+            description: "Gender of the customer"
+          - name: unit_cost
+            tests:
+              - negative_values
