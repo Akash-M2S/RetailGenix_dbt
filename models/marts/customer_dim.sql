@@ -12,6 +12,6 @@ SELECT
   address
 FROM  {{ ref('stg_customer') }}
 {% if is_incremental() %}
-WHERE customer_id NOT IN (SELECT id FROM {{ this }})
+WHERE customer_id NOT IN (SELECT customer_id FROM {{ this }})
 {% endif %}
 
