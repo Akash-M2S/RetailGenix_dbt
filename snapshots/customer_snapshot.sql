@@ -2,7 +2,7 @@
     {{
         config(
         target_schema='snapshots',   
-        unique_key='customer_id',    
+        unique_key='CUSTOMERID',    
         strategy='check',            
         check_cols=['address', 'gender'] 
         )
