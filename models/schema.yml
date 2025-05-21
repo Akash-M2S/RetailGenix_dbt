@@ -5,7 +5,7 @@ models:
   - name: stg_customer
     tests:
       - dbt_utils.equal_rowcount:
-          compare_model: customer_dim
+          compare_model: "{{ref('customer_dim')}}"
     columns:
       - name: gender
         tests:
@@ -13,7 +13,7 @@ models:
       
           
   - name: sales_fact
-    description: "{doc('sale_fact')}"
+    description: "{{ doc('sale_fact') }}"
 
 sources:
   - name: raw_data
