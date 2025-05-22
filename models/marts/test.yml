@@ -1,0 +1,47 @@
+models:
+  - name: calendar
+    description: "calendar Dimension Conatins the Transactions Date details of the Sales at every store"
+    columns:
+      - name: date_id
+        tests:
+          - not_null
+          - unique
+  - name: customer_dim
+    description: "Contains details Aboout customers"
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+
+      - name: name
+        tests:
+          - string_not_empty
+          - not_null
+      - name: gender
+        tests:
+          - string_not_empty
+          - not_null
+  - name: sales_fact
+    description: "{{ doc('sale_fact') }}"
+    columns:
+      - name: date_id
+        tests:
+          - relationships:
+              to: ref('calendar')
+              field: date_id
+      - name: customer_id
+        tests:
+          - relationships:
+              to: ref('customer_dim')
+              field: customer_id
+      - name: product_id
+        tests:
+          - relationships:
+              to: ref('product_dim')
+              field: product_id
+      - name: store_key
+        tests:
+          - relationships:
+              to: ref('store_dim')
+              field: store_key

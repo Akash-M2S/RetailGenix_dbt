@@ -1,8 +1,9 @@
 
 {{ config(materialized='table') }}
+
 select
   transaction_id,
-  date_id               
+  date_id ,              
   customer_id,                        
   product_id,                         
   store_key,                          
