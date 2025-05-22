@@ -10,16 +10,15 @@ models:
       - name: gender
         tests:
           - not_null
-      
-          
+
   - name: sales_fact
     description: "{{ doc('sale_fact') }}"
 
 sources:
   - name: raw_data
     description: "Data From the Snow Flake Contains sales transcation and Customer Details"
+    database: "{{ target.database }}"
     schema: raw
-    database: retails
 
     tables:
       - name: customer

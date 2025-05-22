@@ -1,7 +1,7 @@
 -- int_sales.sql
 
 with base as (
-  select * from {{ ref('stg_sale1') }}
+  select * from {{ ref('stg_sale') }}
 )
 
 select

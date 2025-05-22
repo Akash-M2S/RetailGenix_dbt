@@ -1,3 +1,5 @@
+
+{{ config(materialized='table') }}
 select
   transaction_id,
   date_id               
@@ -10,4 +12,4 @@ select
   derived_unit_price,
   normalized_payment_method,
   
-from {{ ref('stg_sale') }}
+from {{ ref('agg_sales') }}

@@ -4,5 +4,5 @@ select distinct
   store_name,
   region,
   store_type
-from {{ ref('stg_sale') }}
+from {{ ref('agg_sales') }}
 where store_id is not null
