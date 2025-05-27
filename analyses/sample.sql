@@ -1,2 +1,2 @@
 select * from {{ ref("employee_data") }}
-where SALARY like '%80%'
+where SALARY like '%70%'
