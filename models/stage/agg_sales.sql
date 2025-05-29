@@ -15,7 +15,7 @@ select
   unit_cost,
   total_amount,
 
-  -- ✅ Normalize payment method
+  -- Normalize payment method
   case
     when lower(payment_method) like '%card%' then 'CARD'
     when lower(payment_method) like '%cash%' then 'CASH'
@@ -28,7 +28,7 @@ select
   region,
   store_type,
 
-  -- ✅ Derive month, key, unit price
+  ---Derive month, key, unit price
   date_trunc('month', date_id) as sales_month,
   concat(store_id, '_', store_type) as store_key,
   round(total_amount / nullif(quantity_sold, 0), 2) as derived_unit_price

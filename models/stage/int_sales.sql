@@ -12,8 +12,8 @@ select
   product_category,
   date_id,
   quantity_sold,
-  round(unit_cost, 2) as unit_cost,         -- ✅ round here
-  round(total_amount, 2) as total_amount,   -- ✅ round here
+  round(unit_cost, 2) as unit_cost,         --  round here
+  round(total_amount, 2) as total_amount,   --  round here
   PAYMENT_METHOD,
   store_id,
   store_name,
