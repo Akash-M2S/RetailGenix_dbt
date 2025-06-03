@@ -1,1 +1,1 @@
-select * from {{source('sale')}}
+select * from {{source('raw_data','sale')}}
