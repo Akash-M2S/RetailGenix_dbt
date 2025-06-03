@@ -40,3 +40,4 @@ models:
      +tags : ['hourly']
     marts:
       +materialized: table
+      +tags : ['business']
