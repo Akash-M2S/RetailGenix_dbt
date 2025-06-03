@@ -10,16 +10,27 @@ models:
       - name: gender
         tests:
           - not_null
+  
+  
 
 sources:
   - name: raw_data
     description: "Data From the Snow Flake Contains sales transcation and Customer Details"
-    database: "{{ target.database }}"
+    database: "{{target.database}}"
     schema: raw
 
     tables:
       - name: customer
         description: "Customer Details"
+        freshness:
+          warn_after:
+            count: 1
+            period: day
+          error_after:
+            count: 2
+            period: day
+        loaded_at_field: loaded_at_field
+
         columns:
           - name: CUSTOMERID
             description: "Primary key"
