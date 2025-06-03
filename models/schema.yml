@@ -22,15 +22,6 @@ sources:
     tables:
       - name: customer
         description: "Customer Details"
-        freshness:
-          warn_after:
-            count: 1
-            period: day
-          error_after:
-            count: 2
-            period: day
-        loaded_at_field: loaded_at_field
-
         columns:
           - name: CUSTOMERID
             description: "Primary key"
