@@ -38,7 +38,6 @@ models:
     # dev_stage
     stage:
      +tags : ['hourly']
-    
     marts:
       +materialized: table
       +tags : ['business']
