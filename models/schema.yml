@@ -10,11 +10,13 @@ models:
       - name: gender
         tests:
           - not_null
+  
+  
 
 sources:
   - name: raw_data
     description: "Data From the Snow Flake Contains sales transcation and Customer Details"
-    database: "{{ target.database }}"
+    database: "{{target.database}}"
     schema: raw
 
     tables:
